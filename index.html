@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="core" lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Origami template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!--
+		Perform your cuts the mustard test.
+		For information about what features come bundled with other
+		features in all browsers, see caniuse.com
+	-->
+	<script>
+		var cutsTheMustard = ('querySelector' in document && 'localStorage' in window && 'addEventListener' in window);
+
+		if (cutsTheMustard) {
+			// Swap the `core` class on the HTML element for an `enhanced` one
+			// We're doing it early in the head to avoid a flash of unstyled content
+			document.documentElement.className = document.documentElement.className.replace(/\bcore\b/g, 'enhanced');
+		}
+	</script>
+
+	<style>
+		/* Hide any enhanced experience content when in core mode, and vice versa. */
+		.core .o--if-js,
+		.enhanced .o--if-no-js { display: none !important; }
+
+	html {
+			/* Set a font family on the whole document */
+			font-family: Georgia, serif;
+
+			/* Prevent navigation menus from creating
+			   extra space on sides of the page */
+			overflow-x: hidden;
+		}
+
+		body {
+			/* Remove space around the document */
+			margin: 0;
+		}
+
+		/* Add any other inline styles here */
+	</style>
+
+	<!--
+		Load the Origami stylesheet.
+		Replace a,b,c with the names of the additional modules you want to load.
+	-->
+	<link rel="stylesheet" href="https://origami-build.ft.com/v2/bundles/css?modules=o-header@^6.0.3,o-footer@^4.1.3,o-gallery@^2.0.1,o-fonts@^2.1.2,o-typography@^4.1.0,o-grid@^4.2.0,o-colors@^3.4.1,o-link-list@^1.0.4" />
+
+	<!--
+		Unconditionally load the polyfill service to provide the best support
+		possible for modern web standards.s
+		Only features missing in this user agent will be filled.
+		If you want, you can provide a list of features to polyfill, otherwise
+		all features that can be polyfilled will be.
+		See the polyfill service home page for more details:
+		https://cdn.polyfill.io/
+	-->
+	<script src="https://polyfill.webservices.ft.com/v1/polyfill.min.js"></script>
+
+	<!--
+		Load main JavaScript bundle (asynchronously, to make sure it's non-blocking).
+	-->
+	<script>
+		(function(src) {
+			if (cutsTheMustard) {
+				var o = document.createElement('script');
+				o.async = o.defer = true;
+				o.src = src;
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(o, s);
+			}
+		}('https://origami-build.ft.com/v2/bundles/js?modules=o-header@^6.0.3,o-footer@^4.1.3,o-gallery@^2.0.1,o-fonts@^2.1.2,o-typography@^4.1.0,o-grid@^4.2.0,o-colors@^3.4.1,o-link-list@^1.0.4'));
+	</script>
+</head>
+<body style="background-color:#fff1e0">
+  <header class="o-header" data-o-component="o-header" data-o-header--no-js="">
+
+  	<div class="o-header__row o-header__anon">
+  		<ul class="o-header__anon-list">
+  			<li class="o-header__anon-item">
+  				<a class="o-header__anon-link" href="#">Subscribe</a>
+  			</li>
+  			<li class="o-header__anon-item">
+  				<a class="o-header__anon-link" href="#">Sign In</a>
+  			</li>
+  		</ul>
+  	</div>
+
+  	<div class="o-header__row o-header__top">
+  		<div class="o-header__container">
+  			<div class="o-header__top-wrapper">
+  				<div class="o-header__top-column o-header__top-column--left">
+  					<a href="#o-header-search" class="o-header__top-link o-header__top-link--search" aria-controls="o-header-search-js">
+  						<span class="o-header__top-link-label">Search</span>
+  					</a>
+  				</div>
+  				<div class="o-header__top-column o-header__top-column--center">
+  					<a class="o-header__top-logo" href="/" title="Go to Financial Times homepage">
+  						<span class="o-header__visually-hidden">Financial Times</span>
+  					</a>
+  				</div>
+  				<div class="o-header__top-column o-header__top-column--right" role="navigation" aria-label="Account and personalisation links">
+  					<a class="o-header__top-link o-header__top-link--myft" href="/myft">
+  						<span class="o-header__visually-hidden">myFT</span>
+  					</a>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+
+  	<!-- To support both core and enhanced, duplicating the search row is necessary to avoid it flashing in enhanced -->
+  	<!-- Pick only one of the two <div> if you don't need to support both core and enhanced -->
+  	<div id="o-header-search" class="o-header__row o-header__search o--if-no-js" role="search">
+  		<div class="o-header__container">
+  			<form class="o-header__search-form" action="/search" role="search" aria-label="Site search">
+  				<label class="o-header__visually-hidden" for="o-header-search-term">Search the <abbr title="Financial Times">FT</abbr></label>
+  				<input class="o-header__search-term" id="o-header-search-term" name="q" type="text" placeholder="Search the FT"></input>
+  				<button class="o-header__search-submit" type="submit">
+  					Search
+  				</button>
+  			</form>
+  		</div>
+  	</div>
+  	<div id="o-header-search-js" class="o-header__row o-header__search" role="search" data-o-header-search="">
+  		<div class="o-header__container">
+  			<form class="o-header__search-form" action="/search" role="search" aria-label="Site search">
+  				<label class="o-header__visually-hidden" for="o-header-search-term-js">Search the <abbr title="Financial Times">FT</abbr></label>
+  				<input class="o-header__search-term" id="o-header-search-term-js" name="q" type="text" placeholder="Search the FT"></input>
+  				<button class="o-header__search-submit" type="submit">
+  					Search
+  				</button>
+  				<button class="o-header__search-close" type="button" aria-controls="o-header-search-js">
+  					<span class="o-header__visually-hidden">Close</span>
+  				</button>
+  			</form>
+  		</div>
+  	</div>
+
+  	<nav id="o-header-nav-mobile" class="o-header__row o-header__nav o-header__nav--mobile" role="navigation">
+  		<ul class="o-header__nav-list">
+  			<li class="o-header__nav-item">
+  				<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="true">Home</a>
+  			</li>
+  			<li class="o-header__nav-item">
+  				<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="">FastFT</a>
+  			</li>
+  			<li class="o-header__nav-item">
+  				<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="">Markets Data</a>
+  			</li>
+  		</ul>
+  	</nav>
+
+  	<nav id="o-header-nav-desktop" class="o-header__row o-header__nav o-header__nav--desktop" role="navigation">
+  		<div class="o-header__container">
+  			<ul class="o-header__nav-list o-header__nav-list--left">
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="true" id="o-header-link-">Home</a>
+  				</li>
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">World</a>
+  				</li>
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">UK</a>
+  				</li>
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Companies</a>
+  				</li>
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Markets</a>
+  				</li>
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Opinion</a>
+  				</li>
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Work &amp; Careers</a>
+  				</li>
+  				<li class="o-header__nav-item">
+  					<a class="o-header__nav-link o-header__nav-link--primary" href="" aria-selected="" id="o-header-link-">Life &amp; Arts</a>
+  				</li>
+  			</ul>
+  			<ul class="o-header__nav-list o-header__nav-list--right">
+					<li class="o-header__nav-item">
+						<a class="o-header__nav-link o-header__nav-link--utility" href="/login">Sign In</a>
+					</li>
+					<li class="o-header__nav-item">
+						<a class="o-header__nav-button" href="/products">Subscribe</a>
+					</li>
+  			</ul>
+  		</div>
+  	</nav>
+  </header>
+
+  <br>
+
+  <div class="o-grid-container">
+    <div class="o-grid-row">
+		<div data-o-grid-colspan="full-width">
+			<div class="demo-cell">
+				<h1 class="o-typography-heading1">Oh no! We couldn't find the page you were looking for.</h2>
+			</div>
+		</div>
+		<div data-o-grid-colspan="full-width">
+			<div class="demo-cell">
+				<p class="o-typography-lead">We know it's bad, but it could be much worse.</p>
+			</div>
+		</div>
+	</div>
+  <br>
+  <div class="o-grid-row">
+    <div data-o-grid-colspan="two-thirds">
+      <div class="o-gallery o-gallery--slideshow" data-o-component="o-gallery" data-o-gallery-syncid="declarative-slideshow-with-thumbnails" data-o-gallery-captionminheight="30" data-o-gallery-captionmaxheight="50">
+        <h1 class="o-gallery__title">At least we...</h1>
+          <ol class="o-gallery__items">
+      			<li class="o-gallery__item" aria-selected="true">
+      				<div class="o-gallery__item__content"><img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F40829714-3df3-11e6-8716-a4a71e8140b0?source=next&fit=scale-down&width=700"></img></div>
+      				<div class="o-gallery__item__caption">...haven't been stabbed in the back by Michael Gove</div>
+      			</li>
+      			<li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fa255f9ae-413b-11e6-9b66-0712b3873ae1?source=next&fit=scale-down&width=700"></img></div>
+      				<div class="o-gallery__item__caption">...still have some support from our colleagues</div>
+      			</li>
+      			<li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fc0748aec-7e48-11e5-a1fe-567b37f80b64?source=next&fit=scale-down&width=700"></img></div>
+      				<div class="o-gallery__item__caption">...didn't call a EU Referendum</div>
+      			</li>
+      			<li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fce49cf2e-f4ab-11e3-a143-00144feabdc0?source=next&fit=scale-down&width=700"></img></div>
+      				<div class="o-gallery__item__caption">...aren't the subject of the Chilcot report</div>
+      			</li>
+            <li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fbe327646-3d46-11e6-8716-a4a71e8140b0?source=next&fit=scale-down&width=700"></img></div>
+      				<div class="o-gallery__item__caption">...didn't crash out of the Euros early...again</div>
+      			</li>
+            <li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F3aabc462-3fa3-11e6-8716-a4a71e8140b0?source=next&fit=scale-down&width=700"></img></div>
+      				<div class="o-gallery__item__caption">...aren't Donald Trump</div>
+      			</li>
+        	</ol>
+        </div>
+        <div class="o-gallery o-gallery--thumbnails" data-o-component="o-gallery" data-o-gallery-syncid="declarative-slideshow-with-thumbnails" data-o-gallery-multipleitemsperpage="true">
+        	<ol class="o-gallery__items">
+      			<li class="o-gallery__item" aria-selected="true">
+      				<div class="o-gallery__item__content"><img src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F40829714-3df3-11e6-8716-a4a71e8140b0?source=next&fit=scale-down&width=700"></img></div>
+      			</li>
+      			<li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fa255f9ae-413b-11e6-9b66-0712b3873ae1?source=next&fit=scale-down&width=700"></img></div>
+      			</li>
+      			<li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fc0748aec-7e48-11e5-a1fe-567b37f80b64?source=next&fit=scale-down&width=700"></img></div>
+      			</li>
+      			<li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fce49cf2e-f4ab-11e3-a143-00144feabdc0?source=next&fit=scale-down&width=700"></img></div>
+      			</li>
+            <li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2Fbe327646-3d46-11e6-8716-a4a71e8140b0?source=next&fit=scale-down&width=700"></img></div>
+      			</li>
+            <li class="o-gallery__item">
+      				<div class="o-gallery__item__content"><img src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F3aabc462-3fa3-11e6-8716-a4a71e8140b0?source=next&fit=scale-down&width=700"></img></div>
+      			</li>
+        	</ol>
+        </div>
+      </div>
+  		<div data-o-grid-colspan="one-thirds">
+  			<div class="demo-cell">
+          <aside class="o-link-list">
+            <div class="o-link-list__aside-title">Articles that do work, <em class="o-typography-italic">we promise</em></div>
+            <ul class="o-link-list__item-container">
+              <li><a class="o-link-list__item" href="#">Conservative leadership election</a></li>
+              <li><a class="o-link-list__item" href="#">Labour leadership debate</a></li>
+              <li><a class="o-link-list__item" href="#">David Cameron resigns</a></li>
+              <li><a class="o-link-list__item" href="#">Chilcot report</a></li>
+              <li><a class="o-link-list__item" href="#">Euro 2016</a></li>
+              <li><a class="o-link-list__item" href="#">US presidential elections</a></li>
+            </ul>
+          </aside>
+  			</div>
+  		</div>
+    </div>
+  </div>
+
+  <footer class="o-footer o-footer--theme-light" data-o-component="o-footer">
+  	<div class="o-footer__container">
+  		<div class="o-footer__row o-footer__copyright">
+  			<div class="o-footer__col o-footer__col--full-width">
+  				<span>&#xA9; THE FINANCIAL TIMES LTD .</span>
+  				<span><abbr title="Financial Times">FT</abbr> and &#x2018;Financial Times&#x2019; are trademarks of The Financial Times Ltd.</span>
+  			</div>
+  		</div>
+  	</div>
+
+  	<div class="o-footer__brand">
+  		<div class="o-footer__container">
+  			<div class="o-footer__row">
+  				<div class="o-footer__col o-footer__col--full-width">
+  					<div class="o-footer__brand-logo" aria-label="A Nikkei Company"></div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </footer>
+
+</body>
+</html>
